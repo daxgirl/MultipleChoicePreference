@@ -41,7 +41,6 @@ public class MyMultiChoicePreference extends DialogPreference {
     private AsyncTask<Void, Void, Void> mAppLoader;
     private RecyclerView recyclerView;
     private List<String> mPersistedPackagesList;
-    private StringBuilder sb;
     private ProgressBar mProgressBar;
 
     public MyMultiChoicePreference(Context context, AttributeSet attrs) {
@@ -85,6 +84,7 @@ public class MyMultiChoicePreference extends DialogPreference {
     @Override
     public void onClick(final DialogInterface dialog, int which) {
         if (which == AlertDialog.BUTTON_POSITIVE) {
+            StringBuilder sb = new StringBuilder();
             Log.d(LOG_TAG, "onClick triggered by positive button");
             for (String value : mPersistedPackagesList) {
                 Log.d(LOG_TAG, "onClick value is " + value);
@@ -107,7 +107,6 @@ public class MyMultiChoicePreference extends DialogPreference {
         super.onBindDialogView(view);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         mPersistedPackagesList = new ArrayList<>();
-        sb = new StringBuilder();
         mProgressBar = (ProgressBar) view.findViewById(R.id.progressBar);
         loadApps();
     }
