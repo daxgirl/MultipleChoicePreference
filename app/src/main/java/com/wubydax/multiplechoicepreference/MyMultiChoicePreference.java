@@ -87,6 +87,7 @@ public class MyMultiChoicePreference extends DialogPreference {
         if (which == AlertDialog.BUTTON_POSITIVE) {
             Log.d(LOG_TAG, "onClick triggered by positive button");
             for (String value : mPersistedPackagesList) {
+                Log.d(LOG_TAG, "onClick value is " + value);
                 if (!value.equals("")) {
                     sb.append(value).append(";");
                 } else {
@@ -182,6 +183,8 @@ public class MyMultiChoicePreference extends DialogPreference {
                     } else {
                         mPersistedPackagesList.remove(mList.get(position).appPackage);
                     }
+                    mList.get(position).isSelected = isChecked;
+
                 }
             });
         }
